@@ -6,20 +6,69 @@ const questions = [
     type: "list",
     name: "opcion",
     message: "¿Que desea hacer?",
-    choices: ["opt1", "opt2", "opt3"],
+    choices: [
+      {
+        value: "1",
+        name: `${"1.".green} Crear tarea`,
+      },
+      {
+        value: "2",
+        name: `${"2.".green} Listar tareas`,
+      },
+      {
+        value: "3",
+        name: `${"3.".green} Listar tareas completadas`,
+      },
+      {
+        value: "4",
+        name: `${"4.".green} Listar tareas pendientes`,
+      },
+      {
+        value: "5",
+        name: `${"5.".green} Completar tarea(s)`,
+      },
+      {
+        value: "6",
+        name: `${"6.".green} Borrar tarea`,
+      },
+      {
+        value: "0",
+        name: `${"0.".green} Salir`,
+      },
+    ],
   },
 ];
 
 const inquireMenu = async () => {
-  console.clear();
+  // console.clear();
   console.log("=============================".green);
-  console.log(`    Seleccione una opcion`.green);
+  console.log(`   Seleccione una opcion`.green);
   console.log("=============================\n".green);
 
-  const opt = await inquirer.prompt(questions);
+  const { opcion } = await inquirer.prompt(questions);
 
-  return opt;
+  return opcion;
 };
 module.exports = {
   inquireMenu,
+};
+
+const pausa = async () => {
+  const question = [
+    {
+      type: "input",
+      name: "enter",
+      message: `Presione ${"enter".green} para continuar`,
+    },
+  ];
+
+  console.log("\n");
+  await inquirer.prompt(question); // Espera a que el usuario presione enter para continuar
+  // console.log("\n"); // Imprime un salto de línea para separar la salida de la entrada del usuario
+  // return; // Retorna undefined para que el método pueda ser utilizado como una función de flecha
+};
+
+module.exports = {
+  inquireMenu,
+  pausa,
 };
