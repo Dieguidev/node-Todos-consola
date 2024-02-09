@@ -68,7 +68,27 @@ const pausa = async () => {
   // return; // Retorna undefined para que el método pueda ser utilizado como una función de flecha
 };
 
+const leerInput = async (message) => {
+  const question = [
+    {
+      type: "input",
+      name: "desc",
+      message,
+      validate(value) {
+        if (value.length === 0) {
+          return "Por favor ingrese un valor";
+        }
+        return true;
+      },
+    },
+  ];
+
+  const { desc } = await inquirer.prompt(question);
+  return desc; // Retorna el valor ingresado por el usuario en la variable desc
+};
+
 module.exports = {
   inquireMenu,
   pausa,
+  leerInput,
 };

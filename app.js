@@ -1,5 +1,5 @@
 require("colors");
-const { inquireMenu, pausa } = require("./helpers/inquirer.js");
+const { inquireMenu, pausa, leerInput } = require("./helpers/inquirer.js");
 const { Tarea } = require("./models/tarea.js");
 const Tareas = require("./models/tareas.js");
 
@@ -9,10 +9,22 @@ const main = async () => {
   console.log("Hola mundo");
 
   let opt = "";
+  const tareas = new Tareas();
 
   do {
     opt = await inquireMenu();
-    console.log({ opt });
+
+    switch (opt) {
+      case "1":
+        // todo: crear opcion
+        const desc = await leerInput("Description: ");
+        tareas.crearTarea(desc);
+        break;
+      case "2":
+        // todo: crear opcion
+        console.log(tareas._listado);
+        break;
+    }
 
     if (opt !== "0") await pausa();
   } while (opt != 0);
