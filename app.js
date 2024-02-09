@@ -6,12 +6,11 @@ const Tareas = require("./models/tareas.js");
 // const { mostrarMenu, pausa } = require("./helpers/mensajes");
 
 const main = async () => {
-  console.log("Hola mundo");
-
   let opt = "";
   const tareas = new Tareas();
 
   do {
+    //imprimir el menu
     opt = await inquireMenu();
 
     switch (opt) {
@@ -22,7 +21,7 @@ const main = async () => {
         break;
       case "2":
         // todo: crear opcion
-        console.log(tareas._listado);
+        console.log(tareas.listadoArr);
         break;
     }
 
