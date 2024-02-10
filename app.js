@@ -32,7 +32,8 @@ const main = async () => {
         break;
       case "2":
         // todo: crear opcion
-        console.log(tareas.listadoArr);
+        // console.log(tareas.listadoArr);
+        tareas.listadoCompleto();
         break;
     }
 
