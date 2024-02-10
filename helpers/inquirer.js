@@ -49,9 +49,6 @@ const inquireMenu = async () => {
 
   return opcion;
 };
-module.exports = {
-  inquireMenu,
-};
 
 const pausa = async () => {
   const question = [
