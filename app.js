@@ -25,16 +25,18 @@ const main = async () => {
 
     switch (opt) {
       case "1":
-        // todo: crear opcion
-
         const desc = await leerInput("Description: ");
         tareas.crearTarea(desc);
         break;
       case "2":
-        // todo: crear opcion
         // console.log(tareas.listadoArr);
         tareas.listadoCompleto();
         break;
+      case "3":
+        tareas.listarPendientesCompletadas();
+        break;
+      case "4":
+        tareas.listarPendientesCompletadas(false);
     }
 
     guardarDB(tareas.listadoArr);
